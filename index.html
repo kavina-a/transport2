@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Public Transport — Parliamentary Sub-Committee Submission</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/theme/white.min.css" />
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #0d5c56;
+      --accent: #0e7490;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --surface: #f8fafc;
+      --border: #e2e8f0;
+    }
+
+    /* Frame slides to fit viewport */
+    .reveal {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .reveal .slides {
+      text-align: left;
+    }
+
+    .reveal .slides section {
+      padding: 0.45em 2.25em 0.45em 2.25em;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .reveal h1, .reveal h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      color: var(--primary-dark);
+      text-transform: none;
+      letter-spacing: -0.02em;
+    }
+
+    .reveal h1 {
+      font-size: 2.35em;
+      margin-bottom: 0.28em;
+      line-height: 1.2;
+    }
+
+    .reveal h2 {
+      font-size: 1.7em;
+      margin-bottom: 0.35em;
+      padding-bottom: 0.22em;
+      border-bottom: 3px solid var(--primary);
+      display: inline-block;
+    }
+
+    .reveal ul {
+      margin: 0.2em 0 0 0;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .reveal ul li {
+      margin-bottom: 0.3em;
+      padding-left: 1.5em;
+      position: relative;
+    }
+
+    .reveal ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 0.5em;
+      height: 0.5em;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+
+    .reveal strong {
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    .reveal .subtitle {
+      color: var(--text-muted);
+      font-size: 0.92em;
+      margin-top: 0.35em;
+      font-weight: 500;
+    }
+
+    .reveal .policy-ref, .reveal .contact-line {
+      font-size: 0.85em;
+      color: var(--text-muted);
+      margin-top: 0.3em;
+    }
+
+    .reveal .slide-number {
+      font-size: 0.45em;
+      color: var(--text-muted);
+    }
+
+    /* Title slide */
+    .reveal .title-slide {
+      text-align: center;
+    }
+
+    .reveal .title-slide::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: -10%;
+      width: 50%;
+      height: 60%;
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.06) 0%, rgba(14, 116, 144, 0.04) 100%);
+      border-radius: 2rem;
+      z-index: -1;
+    }
+
+    .reveal .title-slide h1 {
+      font-size: 2.4em;
+      margin-bottom: 0.2em;
+    }
+
+    .reveal .title-slide .subtitle {
+      margin-top: 0.35em;
+    }
+
+    .reveal .title-slide .presenter {
+      margin-top: 1.1rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.9em;
+      color: var(--text-muted);
+    }
+
+    .reveal .title-slide .presented-by {
+      font-size: 0.75em;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.2em;
+    }
+
+    /* How the system works - simple flow animation */
+    .reveal .flow-viz {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0.75em;
+      flex-wrap: wrap;
+    }
+
+    .reveal .flow-viz .flow-node {
+      padding: 0.4em 0.7em;
+      background: var(--surface);
+      border: 2px solid var(--primary);
+      border-radius: 0.5em;
+      font-size: 0.55em;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .reveal .flow-viz .flow-arrow {
+      font-size: 0.6em;
+      color: var(--primary);
+      animation: flowPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes flowPulse {
+      50% { opacity: 0.5; transform: scale(1.1); }
+    }
+
+    /* Bus path diagram - How the system works */
+    .reveal .bus-path-viz {
+      margin-top: 0.6em;
+      padding: 0.5em;
+      background: var(--surface);
+      border-radius: 0.5em;
+      border: 1px solid var(--border);
+    }
+
+    .reveal .bus-path-viz .bus-path-svg {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .reveal .bus-path-viz .path-line {
+      fill: none;
+      stroke: var(--border);
+      stroke-width: 2;
+      stroke-dasharray: 6 4;
+    }
+
+    .reveal .bus-path-viz .path-bus {
+      fill: var(--primary);
+      stroke: var(--primary-dark);
+      stroke-width: 1;
+    }
+
+    /* Step numbers for "How the system works" */
+    .reveal .step-list li {
+      padding-left: 2.25em;
+    }
+
+    .reveal .step-list li::before {
+      content: attr(data-step);
+      width: auto;
+      height: auto;
+      border-radius: 0.35em;
+      background: var(--primary);
+      color: white;
+      font-size: 0.65em;
+      font-weight: 700;
+      padding: 0.2em 0.5em;
+      top: 0.15em;
+      left: 0;
+      line-height: 1.4;
+    }
+
+    /* Technology grid */
+    .reveal .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.35em 1.4em;
+      margin-top: 0.35em;
+      font-size: 0.9em;
+    }
+
+    .reveal .tech-grid li {
+      padding-left: 1.25em;
+    }
+
+    .reveal .tech-grid li::before {
+      width: 0.35em;
+      height: 0.35em;
+      top: 0.6em;
+      background: var(--accent);
+    }
+
+    /* Thank you slide */
+    .reveal .thank-you-slide {
+      text-align: center;
+    }
+
+    .reveal .thank-you-slide h2 {
+      border: none;
+      margin-bottom: 0.5em;
+    }
+
+    .reveal .thank-you-slide .contact-block {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: var(--surface);
+      border-radius: 0.6rem;
+      display: inline-block;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+
+    .reveal .thank-you-slide .contact-block .contact-line {
+      margin-top: 0.25em;
+    }
+
+    /* Partners and Direct Access slide */
+    .reveal .partners-slide {
+      text-align: center;
+    }
+
+    .reveal .partners-slide h2 {
+      margin-bottom: 0.35em;
+    }
+
+    .reveal .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem 1rem;
+      margin-top: 0.5rem;
+      max-width: 100%;
+      list-style: none;
+      padding: 0;
+    }
+
+    .reveal .partners-grid-four {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem 1.25rem;
+    }
+
+    .reveal .partners-grid li {
+      margin: 0;
+      padding: 0;
+    }
+
+    .reveal .partners-grid li::before {
+      display: none;
+    }
+
+    .reveal .partner-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 0.6rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.6rem;
+      min-height: 80px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .reveal .partner-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.08);
+    }
+
+    .reveal .partner-card img {
+      max-height: 42px;
+      max-width: 110px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 0.3rem;
+    }
+
+    .reveal .partner-card .partner-name {
+      font-size: 0.72em;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin: 0;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .reveal .partner-card .partner-name-only {
+      font-size: 0.95em;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin: 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Title -->
+      <section class="title-slide">
+        <h1>Smart Public Transport</h1>
+        <p class="subtitle">Technology-driven, efficiency-first bus transport for Sri Lanka</p>
+        <p class="subtitle" style="margin-top: 1.2em;">Submission to the Parliamentary Sub-Committee<br />on Ancillary Business Models — Transport</p>
+        <div class="presenter">
+          <p class="presented-by">Presented by</p>
+          <p style="margin: 0; color: var(--text); font-weight: 600;">Rasal Jayasinghe</p>
+          <p class="subtitle" style="margin-top: 0.25em;">Cursor Ambassador for Sri Lanka <span style="color: var(--text-muted); font-weight: 500;">(Cursor — World’s fastest growing AI startup)</span></p>
+          <p class="subtitle" style="margin-top: 0.25em;">Cybersecurity graduate · Host, one of Asia’s & Sri Lanka’s leading tech podcasts</p>
+          <p style="margin: 0.6em 0 0; color: var(--text); font-weight: 600;">Kavina Allahapperuma</p>
+          <p class="subtitle" style="margin-top: 0.2em;">Tech Developer & AI/ML Engineer</p>
+        </div>
+        <aside class="notes">Introduce yourself briefly. This submission responds to the call for public views by the Sub-Committee chaired by Deputy Minister Chathuranga Abeysinghe. Focus: ancillary business models, with public buses as the pilot.</aside>
+      </section>
+
+      <!-- Slide 2: Policy context & motivation -->
+      <section>
+        <h2>Policy context & motivation</h2>
+        <ul>
+          <li>Responding to the <strong>call for public views</strong> by the Parliamentary Sub-Committee on ancillary business models in transport</li>
+          <li>Aligning with national goals: <strong>efficient, reliable, and scalable</strong> public transport</li>
+          <li>Pilot focus: <strong>public buses</strong> — high impact, clear data, and existing operator base</li>
+          <li>Proposal is <strong>policy-aligned</strong>: supports planning, regulation, and future revenue models without rushing payment or booking systems</li>
+        </ul>
+        <p class="policy-ref">Sub-Committee chaired by Deputy Minister Chathuranga Abeysinghe</p>
+        <aside class="notes">Set the frame: this is a formal response to Parliament’s invitation. Emphasise alignment with government objectives and the choice of buses as the pilot.</aside>
+      </section>
+
+      <!-- Slide 3: The problem in public bus transport -->
+      <section>
+        <h2>The problem in public bus transport</h2>
+        <ul>
+          <li><strong>Unpredictability</strong> — passengers cannot reliably know when the next bus will arrive</li>
+          <li><strong>No single view</strong> — operators and regulators lack a unified picture of fleet position and performance</li>
+          <li><strong>Inefficient resource use</strong> — bunching, gaps, and ad hoc scheduling reduce capacity and increase cost</li>
+          <li><strong>Limited data</strong> — little structured data for route planning, subsidies, or ancillary business models</li>
+        </ul>
+        <aside class="notes">Keep tone factual. These are widely recognised pain points that justify an efficiency-first, data-first approach before introducing payments or booking.</aside>
+      </section>
+
+      <!-- Slide 4: Proposed solution overview -->
+      <section>
+        <h2>Proposed solution overview</h2>
+        <ul>
+          <li><strong>Interconnected centralised transport system</strong> — one operational view for regulators and participating operators</li>
+          <li><strong>Smart bus stands</strong> — real-time arrival displays so passengers see when the next bus is due</li>
+          <li><strong>Transponder-based live bus tracking</strong> — accurate, low-cost position and movement data</li>
+          <li><strong>Route and schedule optimisation</strong> — data-driven timetables and dispatching</li>
+          <li><strong>Data-driven operational insights</strong> — reporting for planning, policy, and future ancillary revenue</li>
+        </ul>
+        <aside class="notes">This is the high-level architecture. No booking or payment in phase one — only visibility, reliability, and data.</aside>
+      </section>
+
+      <!-- Slide 5: How the system works (simple flow) -->
+      <section>
+        <h2>How the system works</h2>
+        <ul class="step-list">
+          <li data-step="1">Buses fitted with <strong>transponders</strong> report position and identity to a central platform</li>
+          <li data-step="2">Central system processes data and computes <strong>estimated times of arrival</strong> at stops</li>
+          <li data-step="3"><strong>Smart bus stands</strong> receive and display live arrival information to passengers</li>
+          <li data-step="4">Operators and regulators use the same platform for <strong>monitoring, reporting, and optimisation</strong></li>
+          <li data-step="5">Data is stored for <strong>analytics, route design, and future ancillary services</strong></li>
+        </ul>
+        <div class="flow-viz" aria-hidden="true">
+          <span class="flow-node">Buses (transponders)</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-node">Central platform</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-node">ETAs</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-node">Smart stands & dashboards</span>
+        </div>
+        <div class="bus-path-viz" aria-hidden="true">
+          <svg viewBox="0 0 200 50" class="bus-path-svg">
+            <path class="path-line" d="M 0 12 L 200 12" />
+            <path class="path-line" d="M 0 25 L 200 25" />
+            <path class="path-line" d="M 0 38 L 200 38" />
+            <circle class="path-bus" cx="10" cy="12" r="5"><animate attributeName="cx" from="10" to="190" dur="4s" repeatCount="indefinite" /></circle>
+            <circle class="path-bus" cx="190" cy="25" r="5"><animate attributeName="cx" from="190" to="10" dur="5s" repeatCount="indefinite" /></circle>
+            <circle class="path-bus" cx="50" cy="38" r="5"><animate attributeName="cx" from="50" to="180" dur="3.5s" repeatCount="indefinite" /></circle>
+          </svg>
+        </div>
+        <aside class="notes">Walk through the flow simply. Stress that the same data serves passengers (displays), operators (control), and government (planning and policy).</aside>
+      </section>
+
+      <!-- Slide 6: Why efficiency-first (no payments initially) -->
+      <section>
+        <h2>Why efficiency-first — no payments initially</h2>
+        <ul>
+          <li><strong>Build trust first</strong> — citizens experience reliable, visible service before any change to fare or payment systems</li>
+          <li><strong>Lower risk</strong> — no dependency on payment infrastructure, card issuance, or cash handling in phase one</li>
+          <li><strong>Clear value</strong> — “when does my bus come?” is answered; operational and policy benefits are immediate</li>
+          <li><strong>Foundation for later</strong> — robust data and operations make future ticketing, booking, or ancillary models easier and more credible</li>
+        </ul>
+        <aside class="notes">Address the deliberate choice not to include booking or payment in phase one. Frame it as prudent and policy-friendly.</aside>
+      </section>
+
+      <!-- Slide 7: Technology & exposure partners -->
+      <section>
+        <h2>Technology & capability credibility</h2>
+        <ul class="tech-grid">
+          <li><strong>Cursor</strong> — AI-assisted development for rapid prototyping and maintainable code</li>
+          <li><strong>Gemini</strong> — multimodal AI for data and workflow integration</li>
+          <li><strong>Google Maps API</strong> — mapping, routing, and location services at global standard</li>
+          <li><strong>Starlink</strong> — connectivity options for remote or backup links</li>
+        </ul>
+        <p class="policy-ref" style="margin-top: 0.75em;">Emphasis: rapid prototyping, scalability, and access to global-standard technology</p>
+        <aside class="notes">Present this as evidence of capability and access to world-class tools, not as hype. Suited to ministers and secretaries who care about feasibility and standards.</aside>
+      </section>
+
+      <!-- Slide 8: Partners and Direct Access -->
+      <section class="partners-slide">
+        <h2>Partners and direct access</h2>
+        <p class="policy-ref" style="margin-bottom: 0.5em;">Direct exposure and collaboration with global-standard technology partners</p>
+        <ul class="partners-grid partners-grid-four">
+          <li>
+            <div class="partner-card">
+              <img src="assets/cursor-logo.png" alt="Cursor" />
+              <span class="partner-name">Cursor · AI-assisted development</span>
+            </div>
+          </li>
+          <li>
+            <div class="partner-card">
+              <img src="assets/gemini-logo.png" alt="Gemini" />
+              <span class="partner-name">Gemini · Multimodal AI</span>
+            </div>
+          </li>
+          <li>
+            <div class="partner-card">
+              <img src="assets/google-maps-logo.png" alt="Google Maps" />
+              <span class="partner-name">Google Maps API · Mapping & routing</span>
+            </div>
+          </li>
+          <li>
+            <div class="partner-card">
+              <span class="partner-name-only">Starlink</span>
+              <p class="policy-ref" style="margin: 0.35em 0 0; font-size: 0.7em;">Connectivity</p>
+            </div>
+          </li>
+        </ul>
+        <aside class="notes">This slide shows the technology partners we have direct access to: Cursor, Gemini, Google Maps API, and Starlink. Emphasise rapid prototyping and global-standard tech access.</aside>
+      </section>
+
+      <!-- Slide 9: Public value & business opportunities -->
+      <section>
+        <h2>Public value & business opportunities</h2>
+        <ul>
+          <li><strong>Public value:</strong> Predictable journeys, less waiting, better information; data for evidence-based policy and subsidy design</li>
+          <li><strong>Operator value:</strong> Better fleet utilisation, fewer complaints, data for schedule and route improvements</li>
+          <li><strong>Ancillary opportunities:</strong> Advertising at smart stands; premium or branded services; data products (anonymised) for urban planning; future integration with ticketing and booking when appropriate</li>
+        </ul>
+        <aside class="notes">Tie back to the Sub-Committee’s focus on ancillary business models. Show that efficiency and data come first, then revenue options follow.</aside>
+      </section>
+
+      <!-- Slide 10: Pilot rollout vision -->
+      <section>
+        <h2>Pilot rollout vision</h2>
+        <ul>
+          <li><strong>Phase one (pilot):</strong> One or two high-demand corridors; transponders on participating buses; smart stands at key stops; central dashboard for operators and regulators</li>
+          <li><strong>Metrics:</strong> Punctuality, headway regularity, passenger feedback, and data quality</li>
+          <li><strong>Scale:</strong> Expand to more routes and operators based on pilot results and policy priorities</li>
+          <li><strong>Governance:</strong> Clear roles for Ministry, regulator, and operators; data ownership and use agreed upfront</li>
+        </ul>
+        <aside class="notes">Keep the pilot concrete but adaptable. Invite input from the Sub-Committee and transport officials on corridor and metric choice.</aside>
+      </section>
+
+      <!-- Slide 11: Next steps & collaboration ask -->
+      <section>
+        <h2>Next steps & collaboration ask</h2>
+        <ul>
+          <li><strong>Dialogue:</strong> Willing to work with the Sub-Committee, Ministry, and transport authorities to refine the proposal and align with existing strategies</li>
+          <li><strong>Pilot design:</strong> Contribute to corridor selection, success criteria, and evaluation framework</li>
+          <li><strong>Technical input:</strong> Share experience with transponder systems, central platforms, and smart displays; connect with suitable technology and implementation partners</li>
+          <li><strong>Timeline:</strong> Ready to support a structured pilot once policy and institutional arrangements are agreed</li>
+        </ul>
+        <aside class="notes">Clear ask: collaboration, not a solo pitch. Invite the Committee and officials to shape the next steps.</aside>
+      </section>
+
+      <!-- Slide 12: Thank you / contact -->
+      <section class="thank-you-slide">
+        <h2>Thank you</h2>
+        <p style="max-width: 28em; margin: 0 auto;">Thank you to the Parliamentary Sub-Committee and Deputy Minister Chathuranga Abeysinghe for the opportunity to submit this proposal.</p>
+        <div class="contact-block">
+          <p class="contact-line" style="margin: 0; color: var(--text); font-weight: 600;">Rasal Jayasinghe</p>
+          <p class="contact-line">Cybersecurity graduate · Tech podcast host (Asia & Sri Lanka)</p>
+          <p class="contact-line" style="margin-top: 0.75em;">Open to follow-up discussion and collaboration with the Ministry and transport authorities.</p>
+        </div>
+        <aside class="notes">Keep closing brief and professional. Offer to answer questions and provide further detail as needed.</aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/notes/notes.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      showSlideNumber: 'all',
+      transition: 'fade',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      width: '100%',
+      height: '100%',
+      margin: 0.08,
+      minScale: 0.1,
+      maxScale: 1.5,
+      center: true,
+      plugins: [ RevealNotes ]
+    });
+  </script>
+</body>
+</html>
